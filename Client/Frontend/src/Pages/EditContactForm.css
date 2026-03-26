@@ -1,4 +1,4 @@
-/* EditContactForm.css - Luxury Theme */
+﻿/* EditContactForm.css - Luxury Black + Gold Theme */
 
 .edit-form-container {
   display: flex;
@@ -9,98 +9,146 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(26, 26, 26, 0.8));
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(10, 10, 10, 0.9));
+  z-index: 999;
 }
 
 .edit-form {
-  background: linear-gradient(135deg, #ffffff, #f8f8f8);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  width: 90%;
-  max-width: 600px;
-  border: 3px solid #ffd700;
-  font-family: 'Georgia', serif;
+  background: rgba(10, 10, 10, 0.88);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 0 2px rgba(255, 215, 0, 0.2);
+  border-radius: 22px;
+  padding: 38px;
+  width: 94%;
+  max-width: 620px;
+  font-family: 'Playfair Display', 'Georgia', serif;
 }
 
 .edit-form h2 {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  color: #000000;
+  font-size: 30px;
+  color: #ffd700;
+  margin-bottom: 25px;
   text-align: center;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 0 16px rgba(255, 215, 0, 0.5);
 }
 
 .edit-form label {
   display: block;
   margin-bottom: 10px;
-  font-weight: bold;
-  font-size: 18px;
-  color: #333;
+  color: #f5e9b0;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .edit-form input[type="text"],
 .edit-form select {
   width: 100%;
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 2px solid #ddd;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255, 215, 0, 0.5);
   border-radius: 10px;
-  font-size: 16px;
-  background: #ffffff;
-  color: #333;
+  background: rgba(14, 14, 18, 0.9);
+  color: #f7f2db;
+  font-size: 15px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .edit-form input[type="text"]:focus,
 .edit-form select:focus {
-  border-color: #ffd700;
   outline: none;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  border-color: #ffd700;
+  box-shadow: 0 0 14px rgba(255, 215, 0, 0.35);
 }
 
 .button-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
 }
 
 .save-button,
 .cancel-button {
-  padding: 15px 30px;
-  border: none;
+  flex: 1;
+  min-width: 120px;
+  padding: 14px 20px;
   border-radius: 10px;
+  border: 1px solid transparent;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
   cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .save-button {
-  background: linear-gradient(135deg, #28a745, #20c997);
-  color: #ffffff;
-  border: 2px solid #28a745;
+  background: linear-gradient(135deg, #ffd700, #f5c843);
+  color: #1a1a1a;
+  border-color: #e6b100;
 }
 
 .save-button:hover {
-  background: linear-gradient(135deg, #20c997, #28a745);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #ffea7e, #fdda5f);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 217, 0, 0.35);
 }
 
 .cancel-button {
-  background: linear-gradient(135deg, #dc3545, #c82333);
+  background: linear-gradient(135deg, #b11a29, #9a1120);
   color: #ffffff;
-  border: 2px solid #dc3545;
+  border-color: #f04f5f;
 }
 
 .cancel-button:hover {
-  background: linear-gradient(135deg, #c82333, #dc3545);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #cc273a, #af1f31);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(192, 35, 55, 0.35);
 }
-  
+
+@media (max-width: 768px) {
+  .edit-form {
+    padding: 25px;
+    width: 96%;
+  }
+
+  .edit-form h2 {
+    font-size: 26px;
+  }
+
+  .edit-form label {
+    font-size: 14px;
+  }
+
+  .button-container {
+    flex-direction: column;
+  }
+
+  .save-button,
+  .cancel-button {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-form {
+    padding: 18px;
+  }
+
+  .edit-form h2 {
+    font-size: 22px;
+  }
+
+  .edit-form input[type="text"],
+  .edit-form select {
+    padding: 11px;
+    font-size: 13px;
+  }
+
+  .save-button,
+  .cancel-button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,146 @@
+﻿/* Login.css - Dark Luxury Black + Gold */
+body {
+  background: radial-gradient(circle at 10% 15%, #1a1a1a 0%, #050505 45%, #000000 100%);
+  font-family: 'Playfair Display', 'Georgia', serif;
+  color: #f9f3d6;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 50% 20%, rgba(255, 215, 0, 0.12), transparent 55%),
+                    repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0 2px, transparent 2px 6px);
+  pointer-events: none;
+}
+
+.login-container {
+  background: rgba(8, 8, 8, 0.85);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 215, 0, 0.22);
+  border-radius: 24px;
+  padding: 44px 48px;
+  width: 100%;
+  max-width: 480px;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+}
+
+.login-title {
+  font-size: 34px;
+  color: #fde68a;
+  margin-bottom: 28px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-label {
+  color: #d4c19f;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  display: block;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  border-radius: 12px;
+  background: rgba(20, 20, 20, 0.92);
+  color: #fbf5dd;
+  font-size: 15px;
+  transition: all 0.25s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: rgba(255, 215, 0, 0.95);
+  box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.14);
+  background: rgba(23, 20, 11, 0.95);
+}
+
+.error-message,
+.success-message {
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.error-message {
+  background: rgba(109, 40, 70, 0.18);
+  border: 1px solid rgba(255, 124, 124, 0.5);
+  color: #f8c1c1;
+}
+
+.success-message {
+  background: rgba(107, 178, 84, 0.18);
+  border: 1px solid rgba(111, 214, 144, 0.5);
+  color: #d7f5ce;
+}
+
+.login-button {
+  width: 100%;
+  padding: 14px 18px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(120deg, #ffd700 0%, #e2b900 40%, #c39200 100%);
+  color: #111;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 8px 20px rgba(255, 184, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(255, 184, 0, 0.45);
+}
+
+.login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-register-line {
+  color: #ffffff;
+}
+
+.login-link {
+  color: #ffffff;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.login-link:hover {
+  color: #ffd700;
+}
+
+
+@media (max-width: 600px) {
+  .login-container {
+    padding: 30px 20px;
+  }
+
+  .login-title {
+    font-size: 28px;
+  }
+}

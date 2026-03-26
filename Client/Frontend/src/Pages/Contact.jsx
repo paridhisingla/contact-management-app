@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Contact.css';
 import profile from '../Images/profile.png';
 import EditForm from './EditForm'; // Import the EditForm component
@@ -11,6 +12,16 @@ const DataTable = () => {
   const [isAscending, setIsAscending] = useState(true);
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [searchTerm,setsearchTerm] = useState("")
+  const navigate = useNavigate();
+
+  // Secure route: force login when no token
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+    }
+  }, [navigate]);
+
   const openCreateForm = () => {
     setShowCreateForm(true);
   };
@@ -180,11 +191,25 @@ const handleSearchInputChange =async (e)=>{
   e.preventDefault
    setsearchTerm(e.target.value)
 }
+
+const handleLogout = () => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+  navigate('/login');
+};
+
 return (
   <>
-    <div className="header">
-      Contact Management App
-    </div>
+    <nav className="navbar">
+      <div className="navbar-brand">
+        Contact Management System
+      </div>
+      <div className="navbar-actions">
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
+    </nav>
     <div className="container">
       <div className="search-bar">
         <input

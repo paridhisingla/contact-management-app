@@ -1,4 +1,3 @@
-
-
-
-export const baseurl = "https://contact-management-app-d35x.vercel.app/api/contacts" 
+﻿const host = import.meta.env.VITE_API_HOST || 'http://localhost:5000';
+export const baseurl = `${host}/api/contacts`;
+export const authBaseurl = `${host}/api/auth`;
