@@ -5,7 +5,9 @@ const ContactRouter = require("./routes/Contact.routes.js")
 const cors = require("cors")
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: ["http://localhost:5173", "https://paridhisingla-contact-management-ap.vercel.app"]
+}))
 app.use("/api",ContactRouter)
 
 
