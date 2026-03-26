@@ -21,7 +21,7 @@ class ContactController{
                  lastName: contact.lastName,
                  phoneNumber: contact.phoneNumber,
                  email: contact.email,
-                 createDate: formatDate(contact.createDate),
+                 createDate: contact.createDate,
                  code:contact.code // Format date here
                };
              });
