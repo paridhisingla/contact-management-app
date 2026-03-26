@@ -49,6 +49,7 @@ const DataTable = () => {
   };
 
   const openEditForm = (contactData) => {
+    console.log("Opening edit form for", contactData.firstName);
     setEditFormData(contactData);
     setShowEditForm(true);
   };
@@ -58,11 +59,13 @@ const DataTable = () => {
   };
 
   const handleSaveEdit = (editedData) => {
+    console.log("Saving edit for", editedData.firstName);
     // Prepare the URL by appending the contact's ID to the base URL.
     const url = `${baseurl}/${editedData._id}`;
 
-    // Create the request body as JSON.
-    const requestBody = JSON.stringify(editedData);
+    // Create the request body as JSON, excluding createDate
+    const { createDate, ...updateData } = editedData;
+    const requestBody = JSON.stringify(updateData);
 
     // Define the PUT request options.
     const requestOptions = {
@@ -77,10 +80,13 @@ const DataTable = () => {
     fetch(url, requestOptions)
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Failed to update contact');
+          return response.json().then(err => { throw new Error(err.error || 'Failed to update contact'); });
         }
+        return response.json();
       })
-      .then(() => {
+      .then((data) => {
+        console.log("Update successful", data);
+        alert("Contact updated successfully");
         // Fetch updated data after successful update.
         fetchUpdatedData();
         
@@ -89,6 +95,7 @@ const DataTable = () => {
       })
       .catch((error) => {
         console.error('Error updating contact:', error);
+        alert("Error updating contact: " + error.message);
         // Handle error scenarios as needed.
       });
   };
@@ -124,6 +131,10 @@ const DataTable = () => {
 
  const handleCreate = (newData) => {
  
+  if (!newData.firstName || !newData.lastName || !newData.phoneNumber || !newData.email || !newData.code) {
+    alert('Please fill all required fields.');
+    return;
+  }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(newData.email)) {
     alert('Please enter a valid email address.');
@@ -152,14 +163,16 @@ const DataTable = () => {
       if (!response.ok) {
         throw new Error("Failed to create contact");
       }
-      alert("Contact Added")
+      return response.json();
     })
-    .then(() => {
+    .then((data) => {
+      alert("Contact Added");
       fetchUpdatedData();
       closeCreateForm();
     })
     .catch((error) => {
       console.error("Error creating contact:", error);
+      alert("Error creating contact: " + error.message);
     });
 };
 
@@ -202,9 +215,9 @@ return (
           {data.map((item) => (
             <tr key={item._id}>
               <td>
-                <div style={{ display: 'flex', textAlign: 'end' }}>
-                  <img width={'30px'} src={profile} alt="Profile"style={{ marginLeft: '40px' }} />
-                  <span style={{ marginLeft: '70px', marginTop: '5px' }}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <img width={'30px'} src={profile} alt="Profile" style={{ marginRight: '10px' }} />
+                  <span>
                     {item.firstName} {item.lastName}
                   </span>
                 </div>

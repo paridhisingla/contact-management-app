@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState } from "react";
 import "./CreateForm.css"; // Create a corresponding CSS file for styling
 
 const CreateForm = ({ onClose, onCreate }) => {
@@ -10,15 +10,19 @@ const CreateForm = ({ onClose, onCreate }) => {
     email: "",
   });
   const [countryChange, setCountryChange] = useState("");
-  const [countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState([
+    { name: "India", code: "+91" },
+    { name: "USA", code: "+1" },
+    { name: "UK", code: "+44" },
+    { name: "Canada", code: "+1" },
+    { name: "Australia", code: "+61" },
+    { name: "Germany", code: "+49" },
+    { name: "France", code: "+33" },
+    { name: "Japan", code: "+81" },
+    { name: "China", code: "+86" },
+    { name: "Brazil", code: "+55" },
+  ]);
   const [Countrycode, setCountryCode] = useState("");
-  useEffect(() => {
-    fetch("https://countrynamewithphonecode.onrender.com/")
-      .then((res) => res.json())
-      .then((data) => {
-        setCountries(data);
-      });
-  }, []);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -26,8 +30,6 @@ const CreateForm = ({ onClose, onCreate }) => {
 
   const handleSubmit = () => {
     onCreate(formData);
-   
-    onClose();
   };
 
 

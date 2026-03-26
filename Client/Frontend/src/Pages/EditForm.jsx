@@ -1,30 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./EditContactForm.css"; // Create a corresponding CSS file for styling
 
 const EditForm = ({ contactData, onClose, onSave }) => {
+  console.log("EditForm rendered for", contactData.firstName);
   const [formData, setFormData] = useState(contactData);
   const [countryChange, setCountryChange] = useState("");
-  const [countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState([
+    { name: "India", code: "+91" },
+    { name: "USA", code: "+1" },
+    { name: "UK", code: "+44" },
+    { name: "Canada", code: "+1" },
+    { name: "Australia", code: "+61" },
+    { name: "Germany", code: "+49" },
+    { name: "France", code: "+33" },
+    { name: "Japan", code: "+81" },
+    { name: "China", code: "+86" },
+    { name: "Brazil", code: "+55" },
+  ]);
   const [Countrycode, setCountryCode] = useState("");
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = () => {
-    onSave(formData);
-    alert("Updated Successfully");
-    // onClose();
-  };
-
-  useEffect(() => {
-    fetch("https://countrynamewithphonecode.onrender.com/")
-      .then((res) => res.json())
-      .then((data) => {
-        setCountries(data);
-      });
-  }, []);
 
   const handleCountrycodechange = (e) => {
     const valueSelected = e.target.value;
@@ -42,8 +35,18 @@ const EditForm = ({ contactData, onClose, onSave }) => {
     }
   };
 
+  const handleSubmit = () => {
+    onSave(formData);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   return (
     <div className="edit-form-container">
+      {console.log("Rendering edit form modal")}
       <div className="edit-form">
         <h2>Edit Contact</h2>
         <label htmlFor="firstName">First Name:</label>
