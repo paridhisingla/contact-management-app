@@ -122,7 +122,6 @@ contact-management-app/
 
 You can access the deployed Contact Management Application using the following link:
 
-[Deployed link](https://contact-managmentadesh.netlify.app/)
 
 Feel free to explore and use the application.
 
